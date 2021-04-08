@@ -42,7 +42,7 @@ public class User {
     }
 
     public void writeGoals() {
-        if (goals != null && goals.isEmpty()) {
+        if (goals == null || goals.isEmpty()) {
             System.out.println("There are no goals");
         } else {
             for (Goal goal : goals) {
@@ -94,7 +94,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setGoals(@Nonnull List<Goal> goals) {
+    public void setGoals(List<Goal> goals) {
         this.goals = goals;
     }
 
@@ -109,8 +109,7 @@ public class User {
     }
     public static void validatePhone(String name) {
         if (!name.matches("^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$")) {
-            throw new IllegalArgumentException("Goal name should be no less than 6 " +
-                    "and no more than 20. It shouldn't contain symbols like: \"!@#$%^&*(){}”|?><:;\"");
+            throw new IllegalArgumentException("Wrong phone format.");
         }
     }
 
